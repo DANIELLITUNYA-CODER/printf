@@ -1,23 +1,24 @@
 #include "main.h"
+#include <stddef.h>
 
-int _print_int(int num)
+/**
+ * _print_str - Prints a string
+ * @str: The string to print
+ *
+ * Return: Number of characters printed (excluding null byte)
+ */
+int _print_str(char *str)
 {
     int count = 0;
 
-    if (num == 0)
-        return _putchar('0');
+    if (str == NULL)
+        str = "(null)";
 
-    if (num < 0)
+    while (*str)
     {
-        count += _putchar('-');
-        num = -num;
+        count += _putchar(*str);
+        str++;
     }
-
-    if (num / 10)
-        count += _print_int(num / 10);
-
-    count += _putchar((num % 10) + '0');
 
     return count;
 }
-

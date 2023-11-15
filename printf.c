@@ -1,6 +1,11 @@
 #include "main.h"
-#include <stdio.h>
+#include <stdarg.h>
 
+/**
+ * _printf - Custom printf function
+ * @format: Format string
+ * Return: Number of characters printed (excluding null byte)
+ */
 int _printf(const char *format, ...)
 {
     int count = 0;
@@ -8,7 +13,7 @@ int _printf(const char *format, ...)
 
     va_start(args, format);
 
-    while (*format)
+    while (format && *format)
     {
         if (*format == '%')
         {
@@ -25,6 +30,12 @@ int _printf(const char *format, ...)
                 }
                 count += _print_int(num);
             }
+            else
+            {
+                count += _putchar('%');
+                if (*format)
+                    count += _putchar(*format);
+            }
         }
         else
         {
@@ -38,3 +49,4 @@ int _printf(const char *format, ...)
 
     return count;
 }
+
