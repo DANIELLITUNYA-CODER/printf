@@ -1,45 +1,30 @@
-#include "main.h"
-#include <unistd.h>  
-#include <stddef.h> 
+#include <unistd.h>
 
 /**
- * _putchar - Writes a character to the standard output (stdout)
- * @c: The character to be written
+ * _putchar - Writes a character to stdout
+ * @c: Character to write
  *
- * Return: On success, the number of characters written. On error, -1 is
- * returned and errno is set appropriately.
+ * Return: Number of bytes written, or -1 on error
  */
-int _putchar(char c) {
+static int _putchar(char c)
+{
     return write(1, &c, 1);
 }
 
 /**
- * _print_char - Prints a character
- * @c: The character to be printed
+ * _print_str - Prints a string to stdout
+ * @str: String to print
  *
- * Return: The number of characters printed
+ * Return: Number of bytes printed
  */
-int _print_char(int c) {
-    _putchar(c);
-    return 1;
-}
-
-/**
- * _print_str - Prints a string
- * @str: The string to be printed
- *
- * Return: The number of characters printed
- */
-int _print_str(char *str) {
+int _print_str(char *str)
+{
     int count = 0;
 
-    if (str == NULL)
-        str = "(null)";
-
-    while (*str) {
-        _putchar(*str);
+    while (*str)
+    {
+        count += _putchar(*str);
         str++;
-        count++;
     }
 
     return count;
