@@ -1,31 +1,22 @@
-#include <unistd.h>
+#include "main.h"
 
-/**
- * _putchar - Writes a character to stdout
- * @c: Character to write
- *
- * Return: Number of bytes written, or -1 on error
- */
-static int _putchar(char c)
-{
-    return write(1, &c, 1);
-}
-
-/**
- * _print_str - Prints a string to stdout
- * @str: String to print
- *
- * Return: Number of bytes printed
- */
-int _print_str(char *str)
+int _print_int(int num)
 {
     int count = 0;
 
-    while (*str)
+    if (num == 0)
+        return _putchar('0');
+
+    if (num < 0)
     {
-        count += _putchar(*str);
-        str++;
+        count += _putchar('-');
+        num = -num;
     }
+
+    if (num / 10)
+        count += _print_int(num / 10);
+
+    count += _putchar((num % 10) + '0');
 
     return count;
 }
