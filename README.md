@@ -2,7 +2,7 @@
 
 ## Description
 
-A simple implementation of the printf function in C.
+ simple team project of the printf function in C.
 
 ## Files
 
